@@ -1,0 +1,38 @@
+extends layout.pug
+
+block content
+    .container.map-fluid
+            .row
+                .col-md-6.border-end.p-4
+                    div#map-container(style="height:65vh;")
+                        div#map(style="height:100%; border: 1px solid #ccc;")
+                        script.
+                            maps(); // Call the maps function to initialize the map
+    .container.contacts
+        h1 Contact List
+        a(href="/create") Create a new Contact!
+        br
+        table
+            thead
+                tr
+                    th Name
+                    th Phone
+                    th Email
+                    th Address
+                    th Contact
+            tbody
+                each contact in contacts
+                    tr
+                        td: a(href="/"+contact.id) #{contact.title} #{contact.first_name} #{contact.last_name}
+                        td #{contact.phone_number}
+                        td #{contact.email_address}
+                        td
+                            | #{contact.street}, #{contact.city}, #{contact.state}, #{contact.zip}, #{contact.country}
+                        td
+                            input(type="checkbox", id="phone", name="phone", disabled="", checked=contact.contact_by_phone == 1)
+                            label(for="phone") Phone
+                            input(type="checkbox", id="email", name="email", disabled="", checked=contact.contact_by_email == 1)
+                            label(for="email") Email
+                            input(type="checkbox", id="mail", name="mail", disabled="", checked=contact.contact_by_mail == 1)
+                            label(for="mail") Mail
+

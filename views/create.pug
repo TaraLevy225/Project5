@@ -1,0 +1,51 @@
+extends layout.pug
+
+block content
+    .create-contact-container
+        h1.create-contact-heading Create Contact
+        form(action='/create', method='POST')
+            fieldset
+                legend Basic Info
+                <label for='title'>Title</label>
+                <select name='title' class='input-field'>
+                    <option value='Mr.'>Mr.</option>
+                    <option value='Mrs.'>Mrs.</option>
+                    <option value='Ms.'>Ms.</option>
+                    <option value='Dr.'>Dr.</option>
+                </select>
+                label(for='firstname') First Name
+                input(type='text', name='firstname', class='input-field')
+                label(for='lastname') Last Name
+                input(type='text', name='lastname', class='input-field')
+                label(for='phone') Phone
+                input(type='text', name='phone', class='input-field')
+                label(for='email') Email
+                input(type='text', name='email', class='input-field')
+
+            fieldset
+                legend Address
+                label(for='street') Street:
+                input(type='text', name='street', class='input-field')
+                label(for='city') City:
+                input(type='text', name='city', class='input-field')
+                label(for='state') State:
+                input(type='text', name='state', class='input-field')
+                label(for='zip') Zip:
+                input(type='text', name='zip', class='input-field')
+                label(for='country') Country:
+                input(type='text', name='country', class='input-field')
+
+            fieldset
+                legend Contact Preferences
+                label(for="contactByPhone" class="checkbox-label")
+                    input(type="checkbox", name="contactByPhone", checked=contactByPhone)
+                    | Contact by phone
+                label(for="contactByEmail" class="checkbox-label")
+                    input(type="checkbox", name="contactByEmail", checked=contactByEmail)
+                    | Contact by email
+                label(for="contactByMail" class="checkbox-label")
+                    input(type="checkbox", name="contactByMail", checked=contactByMail)
+                    | Contact by mail
+
+            button.btn-add(type='submit') Add
+            a.btn-cancel(href='/') Cancel
