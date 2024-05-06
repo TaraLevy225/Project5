@@ -8,8 +8,8 @@ const addPlace = async () => {
     await loadPlaces();
 }
 
-const maps = async () => {
-
+const loadMap = async () => {
+    console.log("in map")
     map = L.map('map').setView([41, -74], 13);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
 }
