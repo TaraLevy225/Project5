@@ -42,9 +42,8 @@ router.post("/create", async (req, res) => {
       country,
     } = req.body;
 
-    const address = `${street}, ${city}, ${state}, ${zip}, ${country}`; // Constructing the address string
+    const address = `${street}, ${city}, ${state}, ${zip}, ${country}`;
 
-    // Geocode the address to get latitude and longitude
     const result = await geocoder.geocode(address);
     let lat, lng;
     if (result && result.length > 0) {
@@ -125,9 +124,8 @@ router.post("/:id/edit", logged_in, async (req, res) => {
       country,
     } = req.body;
 
-    const address = `${street}, ${city}, ${state}, ${zip}, ${country}`; // Constructing the address string
+    const address = `${street}, ${city}, ${state}, ${zip}, ${country}`;
 
-    // Geocode the address to get latitude and longitude
     const result = await geocoder.geocode(address);
     let lat, lng;
     if (result && result.length > 0) {
@@ -158,8 +156,8 @@ router.post("/:id/edit", logged_in, async (req, res) => {
         contactByPhone,
         contactByEmail,
         contactByMail,
-        lat, // Include latitude in the updateContact function
-        lng // Include longitude in the updateContact function
+        lat,
+        lng
       );
 
       res.redirect("/");
